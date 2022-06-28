@@ -4,8 +4,6 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
-
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -90,8 +88,9 @@ class SignUp extends StatelessWidget {
 
                       ),
                       decoration: InputDecoration(
+                        labelText: 'Email',
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
+                          borderSide: BorderSide(),
                         ),
                       ),
                     ),//EMAIL
@@ -105,7 +104,7 @@ class SignUp extends StatelessWidget {
                           borderSide: BorderSide(),
                         ),
                       ),
-                      initialCountryCode: 'IN',
+                      initialCountryCode: 'Eg',
                       onChanged: (phone) {
                         print(phone.completeNumber);
                       },
@@ -121,9 +120,12 @@ class SignUp extends StatelessWidget {
                         fontWeight: FontWeight.w600,
 
                       ),
-                      decoration: InputDecoration(border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),),
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
+                      ),
                     ),//PASSWORD
                     SizedBox(
                       height: 10,
