@@ -1,7 +1,6 @@
 import 'package:algoriza1/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:country_pickers/country_pickers.dart';
-import 'package:country_pickers/country.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 class LoginScreen extends StatelessWidget {
    LoginScreen({Key? key}) : super(key: key);
@@ -80,22 +79,17 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        children: [
-                          CountryPickerDropdown(
-                            initialValue: 'EG',
-                            itemBuilder: _buildDropdownItem,
-                            priorityList: [
-                              CountryPickerUtils.getCountryByIsoCode('GB'),
-                              CountryPickerUtils.getCountryByIsoCode('CN'),
-                            ],
-                            sortComparator: (Country a, Country b) =>
-                                a.isoCode.compareTo(b.isoCode),
-                            onValuePicked: (Country country) {
-                              print("${country.name}");
-                            },
+                      IntlPhoneField(
+                        decoration: InputDecoration(
+                          labelText: 'Phone Number',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(),
                           ),
-                        ],
+                        ),
+                        initialCountryCode: 'IN',
+                        onChanged: (phone) {
+                          print(phone.completeNumber);
+                        },
                       ),
                       SizedBox(
                         height: 5,
@@ -203,16 +197,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildDropdownItem(Country country) => Container(
-        child: Row(
-          children: <Widget>[
-            CountryPickerUtils.getDefaultFlagImage(country),
-            SizedBox(
-              width: 8.0,
-            ),
-            Text("+${country.phoneCode}(${country.isoCode})"),
-          ],
-        ),
-      );
 }
